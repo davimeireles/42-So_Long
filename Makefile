@@ -1,56 +1,36 @@
 NAME = so_long
-CC = gcc
-FLAGS = -Wall -Wextra -Werror
-MINILIBX_FLAGS = -lX11 -lXext
-#-------------------------------------#
+CC = cc -g -Wall -Wextra -Werror
+RM = rm -rf
 LIBFT = libft/libft.a
 LIBFT_DIR = libft/
-#-------------------------------------#
-SOURCE = so_long.c
-SOURCE_OBJS = $(SOURCE:.c=.o)
-#-------------------------------------#
-MINILIBX = minilibx-linux/libmlx_Linux.a
-MINILIBX_DIR = minilibx-linux/
-#-------------------------------------#
-#MINILIBX_OPENGL = minilibx_opengl/libmlx.a
-#MINILIBX_OPENGL_DIR = minilibx_opengl/
+MLX_DIR = ./mlx
+MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
+MLX_LIB = $(MLX_DIR)/libmlx_Linux.a
+SRCS = *.c
+OBJS = $(SRCS:.c=.o)
+INCLUDES = -I/usr/include -Imlx
 
-# Variáveis de texo
-GREEN = \033[92m
-RESET	= \033[0m
+all:  $(MLX_LIB) $(NAME)
 
-all: $(NAME)
+$(NAME): $(LIBFT) $(OBJS)
+	$(CC) -o $(NAME) $(OBJS) $(LIBFT) $(MLX_FLAGS)
 
-$(NAME): $(LIBFT) $(SOURCE_OBJS) $(MINILIBX_DIR) $(MINILIBX)
-		$(CC) $(FLAGS) $(MINILIBX_FLAGS) -o $(NAME) $(SOURCE_OBJS) $(LIBFT) $(MINILIBX)
-	@echo "[$(GREEN)SUCCESS$(RESET)]Compilation successful."
+$(MLX_LIB):
+	@make -C $(MLX_DIR)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
-$(MINILIBX):
-	$(MAKE) -C $(MINILIBX_DIR)
-
-%.o : %.c
-	$(CC) $(FLAGS) -c $< -o $@
-
-$(MINILIBX_DIR):
-	wget https://cdn.intra.42.fr/document/document/21300/minilibx-linux.tgz -O minilibx
-	tar -xzvf minilibx
-	rm minilibx
+$(OBJS): $(SRCS)
+	$(CC) -c $(SRCS) $(INCLUDES)
 
 clean:
-	rm -rf $(SOURCE_OBJS)
-	$(MAKE) -C $(LIBFT_DIR) clean
-	@echo "[$(GREEN)SUCCESS$(RESET)]Objects removed."
+	$(RM) $(OBJS)
+	$(MAKE) clean -C $(LIBFT_DIR)
 
 fclean: clean
-	rm -rf $(NAME)
-	rm -rf $(LIBFT)
-	@echo "[$(GREEN)SUCCESS$(RESET)]Static Library and Executables removed."
+	$(RM) $(NAME)
+	$(MAKE) fclean -C $(LIBFT_DIR)
 
-re: fclean all
-
-.SILENT:
-
-.PHONY: all clean fclean re
+re: fclean
+	$(MAKE)

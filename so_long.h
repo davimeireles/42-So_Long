@@ -14,6 +14,14 @@
 #define SO_LONG_H
 
 # include "libft/libft.h"
-# include "minilibx-linux/mlx.h"
+# include "mlx/mlx.h"
+
+typedef struct s_data {
+	void *mlx_ptr;
+	void *win_ptr;
+} t_data;
+
+int close_window(void *param);
+
 
 #endif
