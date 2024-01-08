@@ -6,7 +6,7 @@
 /*   By: dmeirele <dmeirele@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 20:14:19 by dmeirele          #+#    #+#             */
-/*   Updated: 2023/12/04 18:21:46 by dmeirele         ###   ########.fr       */
+/*   Updated: 2024/01/08 23:44:36 by dmeirele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ int					ft_tolower(int c);
 int					ft_atoi(const char *nptr);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
+int					ft_strcmp(char *str1, char *str2);
 
 size_t				ft_strlcpy(char *dst, const char *src, size_t size);
-size_t				ft_strlen(const char *s);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 
 typedef struct s_list
@@ -90,6 +90,7 @@ char				*ft_extract_line(char *s_buffer);
 char				*ft_strcpy_nl(char *src, char *dest, int nl_stop);
 char				*ft_update_data(char *s_buffer);
 int					ft_check_character(char *str, int c);
+size_t				ft_strlen(const char *str);
 
 // ft_printf functions
 int					ft_printf(const char *format, ...);

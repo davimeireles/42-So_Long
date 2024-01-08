@@ -6,7 +6,7 @@
 /*   By: dmeirele <dmeirele@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 10:25:34 by dmeirele          #+#    #+#             */
-/*   Updated: 2024/01/08 11:18:04 by dmeirele         ###   ########.fr       */
+/*   Updated: 2024/01/08 23:36:20 by dmeirele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,38 @@ bool	check_file(char *path)
 
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
+	{
 		return (false);
+		close(fd);
+	}
+	close(fd);
 	return (true);
 }
 
-void	checker(char *path)
+void	validate_file(char *path)
 {
 	if (!check_path(path))
-	{
-		write(1, "Invalid Path, only (.ber) accepted.\n", 36);
-		exit(1);
-	}
+		p_error("Input");
 	if (!check_file(path))
-	{
-		write(1, "No such file.\n", 14);
-		exit(1);
-	}
+		p_error("File");
+}
+void	p_error(char *str)
+{
+	if (ft_strcmp(str, "Rectangle") == 0)
+		ft_printf("The map is not Rectangular\n");
+	if (ft_strcmp(str, "Wall") == 0)
+		ft_printf("Not Enclosed\n");
+	if (ft_strcmp(str, "Entities") == 0)
+		ft_printf("Invalid number of coins/starts/exits\n");
+	if (ft_strcmp(str, "End") == 0)
+		ft_printf("No way to reach end\n");
+	if (ft_strcmp(str, "File") == 0)
+		ft_printf("File Couldn't be opened only .ber accepted\n");
+	if (ft_strcmp(str, "Unknown") == 0)
+		ft_printf("Forbidden entity in map\n");
+	if (ft_strcmp(str, "Input") == 0)
+		ft_printf("Wrong number of arguments\n");
+	if (ft_strcmp(str, "Coins") == 0)
+		ft_printf("No way to reach all coins\n");
+	exit(1);
 }

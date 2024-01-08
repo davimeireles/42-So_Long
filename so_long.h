@@ -14,16 +14,28 @@
 #define SO_LONG_H
 
 # include "libft/libft.h"
-# include "mlx/mlx.h"
+# include "minilibx-linux/mlx.h"
 # include <stdbool.h>
+# include <stdio.h>
 
 typedef struct s_data {
 	void *mlx_ptr;
 	void *win_ptr;
 } t_data;
 
+// checker
+
 bool	check_path(char *path);
 bool	check_file(char *path);
-void	checker(char *path);
+void	validate_file(char *path);
+void	p_error(char *str);
+
+// checker2
+
+size_t	ft_strlen_nl(char *line);
+int		count_columns(char *line);
+int		count_lines(char *path);
+void	validate_map(char *path);
+char	**fill_input(char *path, int *t_lines);
 
 #endif

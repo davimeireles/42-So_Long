@@ -3,8 +3,8 @@ CC = cc -g -Wall -Wextra -Werror
 RM = rm -rf
 LIBFT = libft/libft.a
 LIBFT_DIR = libft/
-MLX_DIR = ./mlx
-MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
+MLX_DIR = ./minilibx-linux
+MLX_FLAGS = -Lminilibx-linux -lmlx -L/usr/lib/X11 -lXext -lX11
 MLX_LIB = $(MLX_DIR)/libmlx_Linux.a
 SRCS = *.c
 OBJS = $(SRCS:.c=.o)

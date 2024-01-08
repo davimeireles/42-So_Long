@@ -16,7 +16,8 @@ int main(int argc, char **argv)
 {
 	if (argc == 2)
 	{
-		checker(argv[1]);
+		validate_file(argv[1]);
+		validate_map(argv[1]);
 	}
 	else if (argc < 2)
 		write(1, "Too few arguments. Need the executable and the map path.\n", 57);
