@@ -15,13 +15,15 @@
 
 # include "libft/libft.h"
 # include "mlx/mlx.h"
+# include <stdbool.h>
 
 typedef struct s_data {
 	void *mlx_ptr;
 	void *win_ptr;
 } t_data;
 
-int close_window(void *param);
-
+bool	check_path(char *path);
+bool	check_file(char *path);
+void	checker(char *path);
 
 #endif

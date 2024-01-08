@@ -12,32 +12,14 @@
 
 #include "so_long.h"
 
-int close_window(void *param)
+int main(int argc, char **argv)
 {
-	t_data *data = (t_data *)param;
-
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	exit(0);
-
-	return (0);
-}
-
-void	free_struct(t_data *data)
-{
-	free(data->mlx_ptr);
-	free(data->win_ptr);
-	free(data);
-}
-
-int main(void)
-{
-	t_data *data;
-
-	data = malloc(sizeof(t_data));
-	data->mlx_ptr = mlx_init();
-	data->win_ptr = mlx_new_window(data->mlx_ptr,1920,1080,"My program");
-	mlx_hook(data->win_ptr,17,0,close_window, &data);
-	mlx_loop(data->mlx_ptr);
-	mlx_destroy_display(data->mlx_ptr);
-	free_struct(data);
+	if (argc == 2)
+	{
+		checker(argv[1]);
+	}
+	else if (argc < 2)
+		write(1, "Too few arguments. Need the executable and the map path.\n", 57);
+	else
+		write(1, "Too much arguments. Need the executable and the map path.\n", 58);
 }
