@@ -6,7 +6,7 @@
 /*   By: dmeirele <dmeirele@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 10:25:34 by dmeirele          #+#    #+#             */
-/*   Updated: 2024/01/09 10:35:56 by dmeirele         ###   ########.fr       */
+/*   Updated: 2024/01/09 17:36:28 by dmeirele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ bool	check_file(char *path)
 }
 bool	check_line_size(char **input)
 {
-	int	i;
-	int	f_line;
+	int		i;
+	size_t	f_line;
 
 	i = 1;
 	f_line = ft_strlen_nl(input[0]);
@@ -54,27 +54,27 @@ bool	check_line_size(char **input)
 void	validate_file(char *path)
 {
 	if (!check_path(path))
-		p_error(INPUT);
+		p_error(WFILE);
 	if (!check_file(path))
-		p_error(FILE);
+		p_error(INPUT);
 }
 void	p_error(t_error error)
 {
 	if (error == RECTANGLE)
-		ft_printf("The map is not Rectangular\n");
+		ft_printf("Map is not Rectangular.\n");
 	if (error == WALL)
-		ft_printf("Not Enclosed\n");
+		ft_printf("Not Enclosed.\n");
 	if (error == ENTITIES)
-		ft_printf("Invalid number of coins/starts/exits\n");
+		ft_printf("Invalid number of coins/starts/exits.\n");
 	if (error == END)
-		ft_printf("No way to reach end\n");
-	if (error == FILE)
-		ft_printf("File Couldn't be opened only .ber accepted\n");
+		ft_printf("No way to reach end.\n");
+	if (error == WFILE)
+		ft_printf("File Couldn't be opened only .ber accepted.\n");
 	if (error == FORBIDDEN)
-		ft_printf("Forbidden entity in map\n");
+		ft_printf("Forbidden entity in map.\n");
 	if (error == INPUT)
-		ft_printf("Wrong number of arguments\n");
+		ft_printf("File not found.\n");
 	if (error == COINS)
-		ft_printf("No way to reach all coins\n");
+		ft_printf("No way to reach all coins.\n");
 	exit(1);
 }

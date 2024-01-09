@@ -24,7 +24,7 @@ typedef enum	error
 	WALL,
 	ENTITIES,
 	END,
-	FILE,
+	WFILE,
 	FORBIDDEN,
 	INPUT,
 	COINS
@@ -40,7 +40,7 @@ typedef struct s_data {
 bool	check_path(char *path);
 bool	check_file(char *path);
 void	validate_file(char *path);
-void	p_error(char *str);
+void	p_error(t_error error);
 bool	check_line_size(char **input);
 
 // checker2
