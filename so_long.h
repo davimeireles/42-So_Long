@@ -31,8 +31,8 @@ typedef enum	error
 }			t_error;
 
 typedef struct s_data {
-	void *mlx_ptr;
-	void *win_ptr;
+	void	*mlx_ptr;
+	void	*win_ptr;
 } t_data;
 
 // checker

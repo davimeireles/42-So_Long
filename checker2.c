@@ -6,7 +6,7 @@
 /*   By: dmeirele <dmeirele@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 21:30:44 by dmeirele          #+#    #+#             */
-/*   Updated: 2024/01/09 10:35:49 by dmeirele         ###   ########.fr       */
+/*   Updated: 2024/01/09 17:37:49 by dmeirele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	count_lines(char *path)
 	if (fd < 0)
 		return (0);
 	lines = 0;
-	while((line = get_next_line(fd)))
+	while ((line = get_next_line(fd)))
 	{
 		lines++;
 		free(line);
@@ -36,7 +36,7 @@ int	count_columns(char *line)
 	int	columns;
 
 	columns = 0;
-	while(line[columns] && line[columns] != '\n')
+	while (line[columns] && line[columns] != '\n')
 		columns++;
 	return (columns);
 }
