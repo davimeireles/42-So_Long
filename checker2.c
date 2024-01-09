@@ -51,18 +51,20 @@ size_t	ft_strlen_nl(char *line)
 	return (i);
 }
 
-void	validate_map(char *path)
+bool	check_line_size(char **input)
 {
-	t_map	input;
+	int		i;
+	size_t	f_line;
 
-	input.map = fill_input(path, &input.lines);
-	input.columns = count_columns(input.map[0]);
-	if (input.lines == input.columns || (!check_line_size(input.map)))
-		p_error(RECTANGLE);
-	if (!check_walls(input))
-		p_error(WALL);
-	if (!check_entities(input))
-		p_error(ENTITIES);
+	i = 1;
+	f_line = ft_strlen_nl(input[0]);
+	while (input[i])
+	{
+		if (ft_strlen_nl(input[i]) != f_line)
+			return (false);
+		i++;
+	}
+	return (true);
 }
 
 char	**fill_input(char *path, int *t_lines)

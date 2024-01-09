@@ -51,15 +51,15 @@ bool	check_path(char *path);
 bool	check_file(char *path);
 void	validate_file(char *path);
 void	p_error(t_error error);
-bool	check_line_size(char **input);
+void	validate_map(char *path);
 
 /* checker 2 */
 
 size_t	ft_strlen_nl(char *line);
 int		count_columns(char *line);
 int		count_lines(char *path);
-void	validate_map(char *path);
 char	**fill_input(char *path, int *t_lines);
+bool	check_line_size(char **input);
 
 /* checker 3 */
 

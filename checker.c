@@ -33,21 +33,7 @@ bool	check_file(char *path)
 	close(fd);
 	return (true);
 }
-bool	check_line_size(char **input)
-{
-	int		i;
-	size_t	f_line;
 
-	i = 1;
-	f_line = ft_strlen_nl(input[0]);
-	while (input[i])
-	{
-		if (ft_strlen_nl(input[i]) != f_line)
-			return (false);
-		i++;
-	}
-	return (true);
-}
 void	validate_file(char *path)
 {
 	if (!check_path(path))
@@ -55,6 +41,21 @@ void	validate_file(char *path)
 	if (!check_file(path))
 		p_error(INPUT);
 }
+
+void	validate_map(char *path)
+{
+	t_map	input;
+
+	input.map = fill_input(path, &input.lines);
+	input.columns = count_columns(input.map[0]);
+	if (input.lines == input.columns || (!check_line_size(input.map)))
+		p_error(RECTANGLE);
+	if (!check_walls(input))
+		p_error(WALL);
+	if (!check_entities(input))
+		p_error(ENTITIES);
+}
+
 void	p_error(t_error error)
 {
 	if (error == RECTANGLE)
