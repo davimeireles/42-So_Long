@@ -18,7 +18,7 @@
 # include <stdbool.h>
 # include <stdio.h>
 
-typedef enum	error
+typedef enum error
 {
 	RECTANGLE,
 	WALL,
