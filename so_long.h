@@ -24,7 +24,7 @@ typedef enum	error
 	WALL,
 	ENTITIES,
 	END,
-	WFILE,
+	NO_FILE,
 	FORBIDDEN,
 	INPUT,
 	COINS
@@ -33,9 +33,19 @@ typedef enum	error
 typedef struct s_data {
 	void	*mlx_ptr;
 	void	*win_ptr;
-} t_data;
+}		t_data;
 
-// checker
+typedef struct s_map
+{
+	char **map;
+	int	lines;
+	int	columns;
+	int	coins;
+	int	player;
+	int	exit;
+}		t_map;
+
+/* checker */
 
 bool	check_path(char *path);
 bool	check_file(char *path);
@@ -43,12 +53,19 @@ void	validate_file(char *path);
 void	p_error(t_error error);
 bool	check_line_size(char **input);
 
-// checker2
+/* checker 2 */
 
 size_t	ft_strlen_nl(char *line);
 int		count_columns(char *line);
 int		count_lines(char *path);
 void	validate_map(char *path);
 char	**fill_input(char *path, int *t_lines);
+
+/* checker 3 */
+
+bool	check_walls(t_map input);
+bool	check_first_last(char *str);
+bool	check_entities(t_map input);
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dmeirele <dmeirele@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 21:30:44 by dmeirele          #+#    #+#             */
-/*   Updated: 2024/01/09 17:37:49 by dmeirele         ###   ########.fr       */
+/*   Updated: 2024/01/09 19:33:27 by dmeirele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,20 +53,16 @@ size_t	ft_strlen_nl(char *line)
 
 void	validate_map(char *path)
 {
-	char	**input;
-	int		lines;
- 	int		columns;
+	t_map	input;
 
-	input = fill_input(path, &lines);
-	for (int i = 0; input[i] != NULL; i++)
-		printf("%s", input[i]);
- 	if (!input)
-		return ;
-	columns = count_columns(input[0]);
-	if (lines == columns)
+	input.map = fill_input(path, &input.lines);
+	input.columns = count_columns(input.map[0]);
+	if (input.lines == input.columns || (!check_line_size(input.map)))
 		p_error(RECTANGLE);
-	if (!check_line_size(input))
-		p_error(RECTANGLE);
+	if (!check_walls(input))
+		p_error(WALL);
+	if (!check_entities(input))
+		p_error(ENTITIES);
 }
 
 char	**fill_input(char *path, int *t_lines)
