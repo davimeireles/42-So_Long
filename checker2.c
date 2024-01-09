@@ -6,7 +6,7 @@
 /*   By: dmeirele <dmeirele@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 21:30:44 by dmeirele          #+#    #+#             */
-/*   Updated: 2024/01/08 23:36:06 by dmeirele         ###   ########.fr       */
+/*   Updated: 2024/01/09 10:35:49 by dmeirele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,9 @@ void	validate_map(char *path)
 		return ;
 	columns = count_columns(input[0]);
 	if (lines == columns)
-		p_error("Rectangle");
+		p_error(RECTANGLE);
+	if (!check_line_size(input))
+		p_error(RECTANGLE);
 }
 
 char	**fill_input(char *path, int *t_lines)

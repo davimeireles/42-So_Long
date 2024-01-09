@@ -6,7 +6,7 @@
 /*   By: dmeirele <dmeirele@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 10:25:34 by dmeirele          #+#    #+#             */
-/*   Updated: 2024/01/08 23:36:20 by dmeirele         ###   ########.fr       */
+/*   Updated: 2024/01/09 10:35:56 by dmeirele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,31 +36,45 @@ bool	check_file(char *path)
 	close(fd);
 	return (true);
 }
+bool	check_line_size(char **input)
+{
+	int	i;
+	int	f_line;
 
+	i = 1;
+	f_line = ft_strlen_nl(input[0]);
+	while (input[i])
+	{
+		if (ft_strlen_nl(input[i]) != f_line)
+			return (false);
+		i++;
+	}
+	return (true);
+}
 void	validate_file(char *path)
 {
 	if (!check_path(path))
-		p_error("Input");
+		p_error(INPUT);
 	if (!check_file(path))
-		p_error("File");
+		p_error(FILE);
 }
-void	p_error(char *str)
+void	p_error(t_error error)
 {
-	if (ft_strcmp(str, "Rectangle") == 0)
+	if (error == RECTANGLE)
 		ft_printf("The map is not Rectangular\n");
-	if (ft_strcmp(str, "Wall") == 0)
+	if (error == WALL)
 		ft_printf("Not Enclosed\n");
-	if (ft_strcmp(str, "Entities") == 0)
+	if (error == ENTITIES)
 		ft_printf("Invalid number of coins/starts/exits\n");
-	if (ft_strcmp(str, "End") == 0)
+	if (error == END)
 		ft_printf("No way to reach end\n");
-	if (ft_strcmp(str, "File") == 0)
+	if (error == FILE)
 		ft_printf("File Couldn't be opened only .ber accepted\n");
-	if (ft_strcmp(str, "Unknown") == 0)
+	if (error == FORBIDDEN)
 		ft_printf("Forbidden entity in map\n");
-	if (ft_strcmp(str, "Input") == 0)
+	if (error == INPUT)
 		ft_printf("Wrong number of arguments\n");
-	if (ft_strcmp(str, "Coins") == 0)
+	if (error == COINS)
 		ft_printf("No way to reach all coins\n");
 	exit(1);
 }

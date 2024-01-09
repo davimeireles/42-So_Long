@@ -18,6 +18,18 @@
 # include <stdbool.h>
 # include <stdio.h>
 
+typedef enum	error
+{
+	RECTANGLE,
+	WALL,
+	ENTITIES,
+	END,
+	FILE,
+	FORBIDDEN,
+	INPUT,
+	COINS
+}			t_error;
+
 typedef struct s_data {
 	void *mlx_ptr;
 	void *win_ptr;
@@ -29,6 +41,7 @@ bool	check_path(char *path);
 bool	check_file(char *path);
 void	validate_file(char *path);
 void	p_error(char *str);
+bool	check_line_size(char **input);
 
 // checker2
 

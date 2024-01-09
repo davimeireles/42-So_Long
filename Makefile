@@ -10,9 +10,9 @@ SRCS = *.c
 OBJS = $(SRCS:.c=.o)
 INCLUDES = -I/usr/include -Imlx
 
-all:  $(MLX_LIB) $(NAME)
+all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJS)
+$(NAME): $(MLX_DIR) $(LIBFT) $(OBJS)
 	@$(CC) -o $(NAME) $(OBJS) $(LIBFT) $(MLX_FLAGS)
 
 $(MLX_LIB):
@@ -23,6 +23,10 @@ $(LIBFT):
 
 $(OBJS): $(SRCS)
 	@$(CC) -c $(SRCS) $(INCLUDES)
+
+$(MLX_DIR):
+	wget https://cdn.intra.42.fr/document/document/21300/minilibx-linux.tgz -O minilibx-linux
+	tar -xzvf minilibx-linux
 
 clean:
 	$(RM) $(OBJS)
