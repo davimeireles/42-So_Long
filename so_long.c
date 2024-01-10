@@ -15,14 +15,12 @@
 int main(int argc, char **argv)
 {
 	t_map	input;
-	int start[2];
 	int i = 0;
 	if (argc == 2)
 	{
 		validate_file(argv[1]);
-		input = validate_map(argv[1]);
-		find_start(input.map, start);
-		flood_fill(input.map,start[0],start[1]);
+		validate_map(argv[1]);
+		input.map = fill_input(argv[1],&input.lines);
 		while(input.map[i])
 		{
 			ft_printf("%s",input.map[i]);

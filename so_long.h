@@ -23,11 +23,9 @@ typedef enum error
 	RECTANGLE,
 	WALL,
 	ENTITIES,
-	END,
 	NO_FILE,
-	FORBIDDEN,
 	INPUT,
-	COINS
+	PATH
 }			t_error;
 
 typedef struct s_data {
@@ -51,7 +49,7 @@ bool	check_path(char *path);
 bool	check_file(char *path);
 void	validate_file(char *path);
 void	p_error(t_error error);
-t_map	validate_map(char *path);
+void	validate_map(char *path);
 
 /* checker 2 */
 
@@ -68,6 +66,9 @@ bool	check_first_last(char *str);
 bool	check_entities(t_map input);
 void	find_start(char **map, int *start);
 void	flood_fill(char **map, int i, int j);
+
+/* checker 4 */
+void	check_map_path(t_map input);
 
 
 

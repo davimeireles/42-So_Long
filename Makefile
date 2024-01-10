@@ -35,7 +35,6 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 	$(MAKE) fclean -C $(LIBFT_DIR)
-	$(RM) minilibx-linux
 
 re: fclean
 	$(MAKE)

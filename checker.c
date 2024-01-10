@@ -42,7 +42,7 @@ void	validate_file(char *path)
 		p_error(INPUT);
 }
 
-t_map	validate_map(char *path)
+void	validate_map(char *path)
 {
 	t_map	input;
 
@@ -54,7 +54,7 @@ t_map	validate_map(char *path)
 		p_error(WALL);
 	if (!check_entities(input))
 		p_error(ENTITIES);
-	return (input);
+	check_map_path(input);
 }
 
 void	p_error(t_error error)
@@ -65,15 +65,11 @@ void	p_error(t_error error)
 		ft_printf("Error\nNot Enclosed.\n");
 	if (error == ENTITIES)
 		ft_printf("Error\nInvalid number of coins/starts/exits.\n");
-	if (error == END)
-		ft_printf("Error\nNo way to reach end.\n");
 	if (error == NO_FILE)
 		ft_printf("Error\nFile cant be opened only .ber accepted.\n");
-	if (error == FORBIDDEN)
-		ft_printf("Error\nForbidden entity in map.\n");
 	if (error == INPUT)
 		ft_printf("Error\nFile not found.\n");
-	if (error == COINS)
-		ft_printf("Error\nNo way to reach all coins.\n");
+	if (error == PATH)
+		ft_printf("Error\nInvalid Path\n");
 	exit(1);
 }
