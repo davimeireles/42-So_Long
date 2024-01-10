@@ -76,7 +76,9 @@ char	**fill_input(char *path, int *t_lines)
 	
 	i = 0;
 	*t_lines = count_lines(path);
-	lines = ft_calloc((*t_lines + 1), sizeof(char *));
+	lines = malloc((sizeof(char *) * (*t_lines + 1)));
+	if (!lines)
+		return (NULL);
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{

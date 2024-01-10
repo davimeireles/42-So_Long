@@ -28,11 +28,6 @@ typedef enum error
 	PATH
 }			t_error;
 
-typedef struct s_data {
-	void	*mlx_ptr;
-	void	*win_ptr;
-}		t_data;
-
 typedef struct s_map
 {
 	char **map;
@@ -42,6 +37,12 @@ typedef struct s_map
 	int	player;
 	int	exit;
 }		t_map;
+
+typedef struct s_data {
+	void	*mlx_ptr;
+	void	*win_ptr;
+	t_map 	input;
+}		t_data;
 
 /* checker */
 
@@ -69,7 +70,10 @@ void	flood_fill(char **map, int i, int j);
 
 /* checker 4 */
 void	check_map_path(t_map input);
+void	check_forbidden_entities(char **map);
 
+/* window utils */
+void	open_window(t_data	*data);
 
 
 

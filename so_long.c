@@ -14,18 +14,23 @@
 
 int main(int argc, char **argv)
 {
-	t_map	input;
+	t_data	*data;
 	int i = 0;
 	if (argc == 2)
 	{
 		validate_file(argv[1]);
 		validate_map(argv[1]);
-		input.map = fill_input(argv[1],&input.lines);
-		while(input.map[i])
+		data = malloc(sizeof(t_data));
+		if (!data)
+			return 0;
+		data->input.map = fill_input(argv[1],&data->input.lines);
+		while(data->input.map[i])
 		{
-			ft_printf("%s",input.map[i]);
+			ft_printf("%s",data->input.map[i]);
+			free(data->input.map[i]);
 			i++;
 		}
+		free(data);
 	}
 	else if (argc < 2)
 		write(1, "Too few arguments. Need the executable and the map path.\n", 57);

@@ -45,6 +45,7 @@ void	validate_file(char *path)
 void	validate_map(char *path)
 {
 	t_map	input;
+	int i = 0;
 
 	input.map = fill_input(path, &input.lines);
 	input.columns = count_columns(input.map[0]);
@@ -54,7 +55,13 @@ void	validate_map(char *path)
 		p_error(WALL);
 	if (!check_entities(input))
 		p_error(ENTITIES);
+	check_forbidden_entities(input.map);
 	check_map_path(input);
+	while(input.map[i])
+	{
+		free(input.map[i]);
+		i++;
+	}
 }
 
 void	p_error(t_error error)

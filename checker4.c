@@ -22,3 +22,23 @@ void	check_map_path(t_map input)
 		i++;
 	}
 }
+
+void	check_forbidden_entities(char **map)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j] && map[i][j] != '\n')
+		{
+			if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != 'P'
+				&& map[i][j] != 'C' && map[i][j] != 'E')
+				p_error(PATH);
+			j++;
+		}
+		i++;
+	}
+}
