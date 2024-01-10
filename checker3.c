@@ -6,7 +6,7 @@
 /*   By: dmeirele <dmeirele@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 23:49:14 by dmeirele          #+#    #+#             */
-/*   Updated: 2024/01/09 23:49:17 by dmeirele         ###   ########.fr       */
+/*   Updated: 2024/01/10 13:08:19 by dmeirele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,40 @@ bool	check_entities(t_map input)
 	if (input.player != 1 || input.coins < 1 || input.exit != 1)
 		return (false);
 	return (true);
+}
+
+void	find_start(char **map, int *start)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j] && map[i][j] != '\n')
+		{
+			if (map[i][j] == 'P')
+			{
+				start[0] = i;
+				start[1] = j;
+				return ;
+			}
+			j++;
+		}
+		i++;
+	}
+	return ;
+}
+
+ void	flood_fill(char **map, int i, int j)
+{
+	if (map[i][j] == '1' || map[i][j] == 'G')
+		return ;
+		
+	map[i][j] = 'G';
+	flood_fill(map,i+1,j);
+	flood_fill(map,i-1,j);
+	flood_fill(map,i,j+1);
+	flood_fill(map,i,j-1);
 }
