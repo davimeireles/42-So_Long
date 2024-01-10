@@ -51,7 +51,7 @@ bool	check_path(char *path);
 bool	check_file(char *path);
 void	validate_file(char *path);
 void	p_error(t_error error);
-void	validate_map(char *path);
+t_map	validate_map(char *path);
 
 /* checker 2 */
 

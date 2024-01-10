@@ -14,13 +14,15 @@
 
 int main(int argc, char **argv)
 {
+	t_map	input;
+
 	if (argc == 2)
 	{
 		validate_file(argv[1]);
-		validate_map(argv[1]);
+		input = validate_map(argv[1]);
 	}
 	else if (argc < 2)
 		write(1, "Too few arguments. Need the executable and the map path.\n", 57);
 	else
-		write(1, "Too much arguments. Need the executable and the map path.\n", 58);
+		write(1, "Too much arguments. Need only executable and the map path.\n", 59);
 }

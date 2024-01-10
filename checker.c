@@ -42,7 +42,7 @@ void	validate_file(char *path)
 		p_error(INPUT);
 }
 
-void	validate_map(char *path)
+t_map	validate_map(char *path)
 {
 	t_map	input;
 
@@ -54,6 +54,7 @@ void	validate_map(char *path)
 		p_error(WALL);
 	if (!check_entities(input))
 		p_error(ENTITIES);
+	return (input);
 }
 
 void	p_error(t_error error)
