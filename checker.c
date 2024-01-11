@@ -6,7 +6,7 @@
 /*   By: dmeirele <dmeirele@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 10:25:34 by dmeirele          #+#    #+#             */
-/*   Updated: 2024/01/09 23:49:28 by dmeirele         ###   ########.fr       */
+/*   Updated: 2024/01/11 13:15:43 by dmeirele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,24 +44,28 @@ void	validate_file(char *path)
 
 void	validate_map(char *path)
 {
-	t_map	input;
+	t_map	*input;
 	int i = 0;
 
-	input.map = fill_input(path, &input.lines);
-	input.columns = count_columns(input.map[0]);
-	if (input.lines == input.columns || (!check_line_size(input.map)))
+	input = malloc(sizeof(t_map));
+	if (!input)
+		return ;
+	input->map = fill_input(path, &input->lines);
+	input->columns = count_columns(input->map[0]);
+	if (input->lines == input->columns || (!check_line_size(input->map)))
 		p_error(RECTANGLE);
 	if (!check_walls(input))
 		p_error(WALL);
 	if (!check_entities(input))
 		p_error(ENTITIES);
-	check_forbidden_entities(input.map);
+	check_forbidden_entities(input->map);
 	check_map_path(input);
-	while(input.map[i])
+	while(input->map[i])
 	{
-		free(input.map[i]);
+		free(input->map[i]);
 		i++;
 	}
+	free(input);
 }
 
 void	p_error(t_error error)

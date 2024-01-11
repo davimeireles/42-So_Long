@@ -62,18 +62,18 @@ bool	check_line_size(char **input);
 
 /* checker 3 */
 
-bool	check_walls(t_map input);
+bool	check_walls(t_map *input);
 bool	check_first_last(char *str);
-bool	check_entities(t_map input);
+bool	check_entities(t_map *input);
 void	find_start(char **map, int *start);
 void	flood_fill(char **map, int i, int j);
 
 /* checker 4 */
-void	check_map_path(t_map input);
+void	check_map_path(t_map *input);
 void	check_forbidden_entities(char **map);
 
 /* window utils */
-void	open_window(t_data	*data);
+ void	open_window(t_data	*data);
 
 
 
