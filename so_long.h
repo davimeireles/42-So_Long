@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
-#define SO_LONG_H
+# define SO_LONG_H
 
 # include "libft/libft.h"
 # include "minilibx-linux/mlx.h"
@@ -30,18 +30,18 @@ typedef enum error
 
 typedef struct s_map
 {
-	char **map;
-	int	lines;
-	int	columns;
-	int	coins;
-	int	player;
-	int	exit;
+	char	**map;
+	int		lines;
+	int		columns;
+	int		coins;
+	int		player;
+	int		exit;
 }		t_map;
 
 typedef struct s_data {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	t_map 	input;
+	t_map	input;
 }		t_data;
 
 /* checker */
@@ -57,7 +57,7 @@ void	validate_map(char *path);
 size_t	ft_strlen_nl(char *line);
 int		count_columns(char *line);
 int		count_lines(char *path);
-char	**fill_input(char *path, int *t_lines);
+char	**fill_input(char *path, int *t_lines, int i);
 bool	check_line_size(char **input);
 
 /* checker 3 */
@@ -73,8 +73,8 @@ void	check_map_path(t_map *input);
 void	check_forbidden_entities(char **map);
 
 /* window utils */
- void	open_window(t_data	*data);
+void	open_window(t_data	*data);
 
-
-
+/* random functions */
+void	print_map_and_free(t_data *data);
 #endif

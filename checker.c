@@ -18,7 +18,7 @@ bool	check_path(char *path)
 
 	len = ft_strlen(path);
 	if (!(path[len - 1] == 'r' && path[len - 2] == 'e' 
-		&& path[len - 3] == 'b' && path[len - 4] == '.'))
+			&& path[len - 3] == 'b' && path[len - 4] == '.'))
 		return (false);
 	return (true);
 }
@@ -45,12 +45,13 @@ void	validate_file(char *path)
 void	validate_map(char *path)
 {
 	t_map	*input;
-	int i = 0;
+	int		i;
 
+	i = 0;
 	input = malloc(sizeof(t_map));
 	if (!input)
 		return ;
-	input->map = fill_input(path, &input->lines);
+	input->map = fill_input(path, &input->lines, 0);
 	input->columns = count_columns(input->map[0]);
 	if (input->lines == input->columns || (!check_line_size(input->map)))
 		p_error(RECTANGLE);
@@ -60,7 +61,7 @@ void	validate_map(char *path)
 		p_error(ENTITIES);
 	check_forbidden_entities(input->map);
 	check_map_path(input);
-	while(input->map[i])
+	while (input->map[i])
 	{
 		free(input->map[i]);
 		i++;

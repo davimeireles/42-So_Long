@@ -67,14 +67,12 @@ bool	check_line_size(char **input)
 	return (true);
 }
 
-char	**fill_input(char *path, int *t_lines)
+char	**fill_input(char *path, int *t_lines, int i)
 {
 	int		fd;
-	int		i;
 	char	**lines;
 	char	*str;
-	
-	i = 0;
+
 	*t_lines = count_lines(path);
 	lines = malloc((sizeof(char *) * (*t_lines + 1)));
 	if (!lines)
@@ -91,4 +89,3 @@ char	**fill_input(char *path, int *t_lines)
 	close(fd);
 	return (lines);
 }
-

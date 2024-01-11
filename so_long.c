@@ -12,28 +12,37 @@
 
 #include "so_long.h"
 
-int main(int argc, char **argv)
+void	print_map_and_free(t_data *data)
 {
- 	t_data	*data;
-	int i = 0;
+	int	i;
+
+	i = 0;
+	while (data->input.map[i])
+	{
+		ft_printf("%s", data->input.map[i]);
+		free(data->input.map[i]);
+		i++;
+	}
+	free(data->input.map);
+	free(data);
+}
+
+int	main(int argc, char **argv)
+{
+	t_data	*data;
+
 	if (argc == 2)
 	{
 		validate_file(argv[1]);
 		validate_map(argv[1]);
-	 	data = malloc(sizeof(t_data));
+		data = malloc(sizeof(t_data));
 		if (!data)
-			return 0;
-		data->input.map = fill_input(argv[1],&data->input.lines);
-		while(data->input.map[i])
-		{
-			free(data->input.map[i]);
-			i++;
-		}
-		free(data->input.map);
-		free(data);
+			return (0);
+		data->input.map = fill_input(argv[1], &data->input.lines, 0);
+		print_map_and_free(data);
 	}
 	else if (argc < 2)
-		write(1, "Too few arguments. Need the executable and the map path.\n", 57);
+		write(1, "Too few arguments.\n", 19);
 	else
-		write(1, "Too much arguments. Need only executable and the map path.\n", 59);
+		write(1, "Too much arguments.\n", 20);
 }

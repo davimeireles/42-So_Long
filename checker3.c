@@ -14,7 +14,7 @@
 
 bool	check_walls(t_map *input)
 {
-	int i;
+	int	i;
 
 	if (!check_first_last(input->map[0]))
 		return (false);
@@ -32,7 +32,7 @@ bool	check_walls(t_map *input)
 
 bool	check_first_last(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] && str[i] != '\n')
@@ -46,8 +46,8 @@ bool	check_first_last(char *str)
 
 bool	check_entities(t_map *input)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	input->player = 0;
@@ -75,8 +75,8 @@ bool	check_entities(t_map *input)
 
 void	find_start(char **map, int *start)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (map[i])
@@ -97,14 +97,13 @@ void	find_start(char **map, int *start)
 	return ;
 }
 
- void	flood_fill(char **map, int i, int j)
+void	flood_fill(char **map, int i, int j)
 {
 	if (map[i][j] == '1' || map[i][j] == 'G')
 		return ;
-		
 	map[i][j] = 'G';
-	flood_fill(map,i+1,j);
-	flood_fill(map,i-1,j);
-	flood_fill(map,i,j+1);
-	flood_fill(map,i,j-1);
+	flood_fill(map, i + 1, j);
+	flood_fill(map, i - 1, j);
+	flood_fill(map, i, j + 1);
+	flood_fill(map, i, j - 1);
 }
