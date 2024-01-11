@@ -65,6 +65,7 @@ void	validate_map(char *path)
 		free(input->map[i]);
 		i++;
 	}
+	free(input->map);
 	free(input);
 }
 

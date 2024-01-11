@@ -26,10 +26,10 @@ int main(int argc, char **argv)
 		data->input.map = fill_input(argv[1],&data->input.lines);
 		while(data->input.map[i])
 		{
-			ft_printf("%s",data->input.map[i]);
 			free(data->input.map[i]);
 			i++;
 		}
+		free(data->input.map);
 		free(data);
 	}
 	else if (argc < 2)
