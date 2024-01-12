@@ -17,6 +17,10 @@
 # include "mlx/mlx.h"
 # include <stdbool.h>
 # include <stdio.h>
+# include <X11/keysym.h>
+# include <X11/Xlib.h>
+
+#define ESC_KEY XK_Escape
 
 typedef enum error
 {
@@ -73,8 +77,10 @@ void	check_map_path(t_map *input);
 void	check_forbidden_entities(char **map);
 
 /* window utils */
-void	open_window(t_data	*data);
+void	window_utilities(t_data	*data);
+void	close_window(void *input);
+void	handle_key_press(XKeyEvent *event, t_data *data);
 
 /* random functions */
-void	print_map_and_free(t_data *data);
+void	free_memory(t_data *data);
 #endif

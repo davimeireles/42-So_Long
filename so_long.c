@@ -12,21 +12,6 @@
 
 #include "so_long.h"
 
-void	print_map_and_free(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (data->input.map[i])
-	{
-		ft_printf("%s", data->input.map[i]);
-		free(data->input.map[i]);
-		i++;
-	}
-	free(data->input.map);
-	free(data);
-}
-
 int	main(int argc, char **argv)
 {
 	t_data	*data;
@@ -39,8 +24,7 @@ int	main(int argc, char **argv)
 		if (!data)
 			return (0);
 		data->input.map = fill_input(argv[1], &data->input.lines, 0);
-		print_map_and_free(data);
-		open_window(data);
+		window_utilities(data);
 	}
 	else if (argc < 2)
 		write(1, "Too few arguments.\n", 19);
