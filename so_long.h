@@ -14,7 +14,7 @@
 # define SO_LONG_H
 
 # include "libft/libft.h"
-# include "minilibx-linux/mlx.h"
+# include "mlx/mlx.h"
 # include <stdbool.h>
 # include <stdio.h>
 

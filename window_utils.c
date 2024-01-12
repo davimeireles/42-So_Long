@@ -1,4 +1,3 @@
-/*
 #include "so_long.h"
 
 void	open_window(t_data	*data)
@@ -10,4 +9,4 @@ void	open_window(t_data	*data)
 	mlx_loop_hook(data->win_ptr,NULL,data->win_ptr);
 	mlx_loop(data->mlx_ptr);
 	mlx_destroy_window(data->mlx_ptr,data->win_ptr);
-}*/
+}

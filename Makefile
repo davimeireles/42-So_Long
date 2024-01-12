@@ -3,30 +3,26 @@ CC = cc -g -Wall -Wextra -Werror
 RM = rm -rf
 LIBFT = libft/libft.a
 LIBFT_DIR = libft/
-MLX_DIR = minilibx-linux/
-MLX_FLAGS = -Lminilibx-linux -lmlx -L/usr/lib/X11 -lXext -lX11
-MLX_LIB = $(MLX_DIR)libmlx_Linux.a
+MLX_DIR = ./mlx
+MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
+MLX_LIB = $(MLX_DIR)/libmlx_Linux.a
 SRCS = *.c
 OBJS = $(SRCS:.c=.o)
 INCLUDES = -I/usr/include -Imlx
 
-all: $(NAME)
+all:  $(MLX_LIB) $(NAME)
 
-$(NAME): $(MLX_DIR) $(LIBFT) $(MLX_LIB) $(OBJS) 
-	@$(CC) $(MLX_FLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MLX_LIB)
+$(NAME): $(LIBFT) $(OBJS)
+	$(CC) -o $(NAME) $(OBJS) $(LIBFT) $(MLX_FLAGS)
 
 $(MLX_LIB):
 	@make -C $(MLX_DIR)
 
 $(LIBFT):
-	@$(MAKE) -C $(LIBFT_DIR)
+	$(MAKE) -C $(LIBFT_DIR)
 
 $(OBJS): $(SRCS)
-	@$(CC) -c $(SRCS) $(INCLUDES)
-
-$(MLX_DIR):
-	wget https://cdn.intra.42.fr/document/document/21300/minilibx-linux.tgz -O minilibx-linux
-	tar -xzvf minilibx-linux
+	$(CC) -c $(SRCS) $(INCLUDES)
 
 clean:
 	$(RM) $(OBJS)

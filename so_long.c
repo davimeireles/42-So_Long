@@ -40,6 +40,7 @@ int	main(int argc, char **argv)
 			return (0);
 		data->input.map = fill_input(argv[1], &data->input.lines, 0);
 		print_map_and_free(data);
+		open_window(data);
 	}
 	else if (argc < 2)
 		write(1, "Too few arguments.\n", 19);
