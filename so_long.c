@@ -14,16 +14,16 @@
 
 int	main(int argc, char **argv)
 {
-	t_data	*data;
+	t_map	*data;
 
 	if (argc == 2)
 	{
 		validate_file(argv[1]);
 		validate_map(argv[1]);
-		data = malloc(sizeof(t_data));
+		data = malloc(sizeof(t_map));
 		if (!data)
 			return (0);
-		data->input.map = fill_input(argv[1], &data->input.lines, 0);
+		data->map = fill_input(argv[1], &data->lines, 0);
 		window_utilities(data);
 	}
 	else if (argc < 2)

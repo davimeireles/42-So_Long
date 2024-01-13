@@ -34,6 +34,8 @@ typedef enum error
 
 typedef struct s_map
 {
+	void	*mlx_ptr;
+	void	*win_ptr;
 	char	**map;
 	int		lines;
 	int		columns;
@@ -41,12 +43,6 @@ typedef struct s_map
 	int		player;
 	int		exit;
 }		t_map;
-
-typedef struct s_data {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	t_map	input;
-}		t_data;
 
 /* checker */
 
@@ -77,11 +73,11 @@ void	check_map_path(t_map *input);
 void	check_forbidden_entities(char **map);
 
 /* window utils */
-void	window_utilities(t_data	*data);
-int		close_window(t_data *data);
-int		handle_key_press(int keysym, t_data *data);
+void	window_utilities(t_map	*data);
+int		close_window(t_map *data);
+int		handle_key_press(int keysym, t_map *data);
 
 
 /* random functions */
-void	free_memory(t_data *data);
+void	free_memory(t_map *data);
 #endif
