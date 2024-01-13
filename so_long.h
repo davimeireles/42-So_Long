@@ -20,7 +20,21 @@
 # include <X11/keysym.h>
 # include <X11/Xlib.h>
 
-#define ESC_KEY XK_Escape
+// Key Code
+# define ESC 65307
+# define W_KEY 119
+# define S_KEY 115
+# define D_KEY 100
+# define A_KEY 97
+# define R_ARROW 65363
+# define L_ARROW 65513
+# define U_ARROW 65362
+# define D_ARROW 65364
+
+// Window Size
+
+# define W_SIZE 800
+# define H_SIZE 600
 
 typedef enum error
 {
@@ -31,6 +45,22 @@ typedef enum error
 	INPUT,
 	PATH
 }			t_error;
+
+typedef struct s_img
+{
+	void	*img;
+	int		width;
+	int		height;
+}		t_img;
+
+typedef struct s_map_utils
+{
+	t_img *wall;
+	t_img *ground;
+	t_img *coins;
+	t_img *exit;
+	t_img *player;
+}	t_utils;
 
 typedef struct s_map
 {
@@ -77,6 +107,8 @@ void	window_utilities(t_map	*data);
 int		close_window(t_map *data);
 int		handle_key_press(int keysym, t_map *data);
 
+/* Draw Image */
+void	test_image(t_map *data);
 
 /* random functions */
 void	free_memory(t_map *data);
