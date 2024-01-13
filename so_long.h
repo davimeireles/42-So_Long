@@ -78,8 +78,9 @@ void	check_forbidden_entities(char **map);
 
 /* window utils */
 void	window_utilities(t_data	*data);
-void	close_window(void *input);
-void	handle_key_press(XKeyEvent *event, t_data *data);
+int		close_window(t_data *data);
+int		handle_key_press(int keysym, t_data *data);
+
 
 /* random functions */
 void	free_memory(t_data *data);

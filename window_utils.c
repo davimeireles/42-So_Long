@@ -15,20 +15,20 @@ void	free_memory(t_data *data)
 	free(data);
 }
 
-void	close_window(void *input)
+int	close_window(t_data *data)
 {
-	t_data *data = (t_data *)input;
-
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	mlx_destroy_display(data->mlx_ptr);
 	free_memory(data);
 	exit(1);
+	return 0;
 }
 
-void handle_key_press(XKeyEvent *event, t_data *data)
+int	handle_key_press(int keysym, t_data *data)
 {
-	if (XLookupKeysym(event, 0) == ESC_KEY)
+	if (keysym == 65307)
 		close_window(data);
+	return 0;
 }
 
 void	window_utilities(t_data	*data)
@@ -37,7 +37,7 @@ void	window_utilities(t_data	*data)
 	if (!data->mlx_ptr)
 		return ;
 	data->win_ptr = mlx_new_window(data->mlx_ptr,800,600, "Game Window");
-	mlx_hook(data->win_ptr, 17, 0, (int (*)())close_window, data);
-	mlx_hook(data->win_ptr, 2, 0, (int (*)())&handle_key_press, data);
+	mlx_hook(data->win_ptr, 2, (1L << 0), handle_key_press, data);
+	mlx_hook(data->win_ptr, 17, 0, close_window, data);
 	mlx_loop(data->mlx_ptr);
 }
