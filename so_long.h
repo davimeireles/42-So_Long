@@ -32,9 +32,11 @@
 # define D_ARROW 65364
 
 // Window Size
-
-# define W_SIZE 800
-# define H_SIZE 600
+#define MAX_LENGTH 100
+#define MAX_HEIGHT 67
+#define ENTITIE 6
+#define IMG_LENGTH 16
+#define IMG_HEIGHT 16
 
 typedef enum error
 {
@@ -46,27 +48,30 @@ typedef enum error
 	PATH
 }			t_error;
 
-typedef struct s_img
+typedef struct coins
 {
-	void	*img;
-	int		width;
-	int		height;
-}		t_img;
+	int	x;
+	int	y;
+	struct coins *next;
+}	coins;
 
-typedef struct s_map_utils
+typedef struct coords
 {
-	t_img *wall;
-	t_img *ground;
-	t_img *coins;
-	t_img *exit;
-	t_img *player;
-}	t_utils;
+	int	x;
+	int	y;
+}	coords;
 
 typedef struct s_map
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	void	**img;
 	char	**map;
+	int		p_loc[2];
+	int		e_loc[2];
+	int		height;
+	int		length;
+	int		moves;
 	int		lines;
 	int		columns;
 	int		coins;
@@ -108,7 +113,8 @@ int		close_window(t_map *data);
 int		handle_key_press(int keysym, t_map *data);
 
 /* Draw Image */
-void	test_image(t_map *data);
+void	load_images(t_map *data);
+void	render(t_map *data);
 
 /* random functions */
 void	free_memory(t_map *data);

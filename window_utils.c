@@ -41,12 +41,21 @@ int	handle_key_press(int keysym, t_map *data)
 
 void	window_utilities(t_map	*data)
 {
+	int length;
+	int height;
+
+	data->length = 34;
+	data->height = 10;
+	length = data->length * 16;
+	height = data->height * 16;
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 		return ;
-	data->win_ptr = mlx_new_window(data->mlx_ptr,W_SIZE,H_SIZE, "Game Window");
+	data->win_ptr = mlx_new_window(data->mlx_ptr,length,height, "Game Window");
+	load_images(data);
+	render(data);
+	data->map[data->p_loc[1]][data->p_loc[0]] = '0';
 	mlx_hook(data->win_ptr, 2, (1L << 0), handle_key_press, data);
 	mlx_hook(data->win_ptr, 17, 0, close_window, data);
-	test_image(data);
 	mlx_loop(data->mlx_ptr);
 }
