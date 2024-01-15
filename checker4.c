@@ -41,3 +41,25 @@ void	check_forbidden_entities(char **map)
 		i++;
 	}
 }
+
+void	find_end(t_map *data)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (data->map[i])
+	{
+		j = 0;
+		while (data->map[i][j] && data->map[i][j] != '\n')
+		{
+			if (data->map[i][j] == 'E')
+			{
+				data->e_loc[0] = j;
+				data->e_loc[1] = i;
+			}
+			j++;
+		}
+		i++;
+	}
+}

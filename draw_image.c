@@ -41,7 +41,7 @@ void	render(t_map *data)
 			if (data->map[i][j] == 'C')
 				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img[2], j * 16, i * 16);
 			if (data->map[i][j] == 'E')
-				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img[3], j * 16, i * 16);
+				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img[4], j * 16, i * 16);
 			if (data->map[i][j] == '0')
 				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img[4], j * 16, i * 16);
 			j++;

@@ -46,6 +46,7 @@ void	window_utilities(t_map	*data)
 
 	length = data->columns * 16;
 	height = data->lines * 16;
+	find_end(data);
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 		return ;

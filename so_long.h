@@ -27,7 +27,7 @@
 # define D_KEY 100
 # define A_KEY 97
 # define R_ARROW 65363
-# define L_ARROW 65513
+# define L_ARROW 65361
 # define U_ARROW 65362
 # define D_ARROW 65364
 
@@ -47,19 +47,6 @@ typedef enum error
 	INPUT,
 	PATH
 }			t_error;
-
-typedef struct coins
-{
-	int	x;
-	int	y;
-	struct coins *next;
-}	coins;
-
-typedef struct coords
-{
-	int	x;
-	int	y;
-}	coords;
 
 typedef struct s_map
 {
@@ -104,7 +91,7 @@ void	flood_fill(char **map, int i, int j);
 /* checker 4 */
 void	check_map_path(t_map *input);
 void	check_forbidden_entities(char **map);
-
+void	find_end(t_map *data);
 /* window utils */
 void	window_utilities(t_map	*data);
 int		close_window(t_map *data);
