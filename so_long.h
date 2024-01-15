@@ -69,8 +69,6 @@ typedef struct s_map
 	char	**map;
 	int		p_loc[2];
 	int		e_loc[2];
-	int		height;
-	int		length;
 	int		moves;
 	int		lines;
 	int		columns;
@@ -115,6 +113,12 @@ int		handle_key_press(int keysym, t_map *data);
 /* Draw Image */
 void	load_images(t_map *data);
 void	render(t_map *data);
+void	open_end(t_map *data);
+void	refresh(t_map *data, int i, int j);
+
+/* Draw Image 2 */
+void	render_old(t_map *data);
+void	render_new(t_map *data);
 
 /* random functions */
 void	free_memory(t_map *data);

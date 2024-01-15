@@ -29,13 +29,13 @@ int	handle_key_press(int keysym, t_map *data)
 	if (keysym == ESC)
 		close_window(data);
 	if (keysym == U_ARROW || keysym == W_KEY)
-		return 1;
+		refresh(data, data->p_loc[0], data->p_loc[1] - 1);
 	if (keysym == D_ARROW || keysym == S_KEY)
-		return 1;
+		refresh(data, data->p_loc[0], data->p_loc[1] + 1);
 	if (keysym == R_ARROW || keysym == D_KEY)
-		return 1;
+		refresh(data, data->p_loc[0] + 1, data->p_loc[1]);
 	if (keysym == L_ARROW || keysym == A_KEY)
-		return 1;
+		refresh(data, data->p_loc[0] - 1, data->p_loc[1]);
 	return 0;
 }
 
@@ -44,10 +44,8 @@ void	window_utilities(t_map	*data)
 	int length;
 	int height;
 
-	data->length = 34;
-	data->height = 10;
-	length = data->length * 16;
-	height = data->height * 16;
+	length = data->columns * 16;
+	height = data->lines * 16;
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 		return ;
