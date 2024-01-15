@@ -44,12 +44,8 @@ bool	check_first_last(char *str)
 	return (true);
 }
 
-bool	check_entities(t_map *input)
+bool	check_entities(t_map *input, int i, int j)
 {
-	int	i;
-	int	j;
-
-	i = 0;
 	input->player = 0;
 	input->exit = 0;
 	input->coins = 0;
@@ -59,7 +55,11 @@ bool	check_entities(t_map *input)
 		while (input->map[i][j] && input->map[i][j] != '\n')
 		{
 			if (input->map[i][j] == 'P')
+			{
 				input->player++;
+				input->p_loc[0] = j;
+				input->p_loc[1] = i;
+			}
 			if (input->map[i][j] == 'E')
 				input->exit++;
 			if (input->map[i][j] == 'C')

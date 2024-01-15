@@ -97,7 +97,7 @@ bool	check_line_size(char **input);
 
 bool	check_walls(t_map *input);
 bool	check_first_last(char *str);
-bool	check_entities(t_map *input);
+bool	check_entities(t_map *input, int i, int j);
 void	find_start(char **map, int *start);
 void	flood_fill(char **map, int i, int j);
 

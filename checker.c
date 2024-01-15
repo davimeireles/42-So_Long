@@ -57,7 +57,7 @@ void	validate_map(char *path)
 		p_error(RECTANGLE);
 	if (!check_walls(input))
 		p_error(WALL);
-	if (!check_entities(input))
+	if (!check_entities(input, 0, 0))
 		p_error(ENTITIES);
 	check_forbidden_entities(input->map);
 	check_map_path(input);
