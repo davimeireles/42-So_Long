@@ -6,7 +6,7 @@
 /*   By: dmeirele <dmeirele@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 10:25:34 by dmeirele          #+#    #+#             */
-/*   Updated: 2024/01/11 13:15:43 by dmeirele         ###   ########.fr       */
+/*   Updated: 2024/01/15 16:33:16 by dmeirele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,41 +37,37 @@ bool	check_file(char *path)
 void	validate_file(char *path)
 {
 	if (!check_path(path))
-		p_error(NO_FILE);
+		p_error(NO_FILE, NULL);
 	if (!check_file(path))
-		p_error(INPUT);
+		p_error(INPUT, NULL);
 }
 
 void	validate_map(char *path)
 {
 	t_map	*input;
-	int		i;
 
-	i = 0;
 	input = malloc(sizeof(t_map));
 	if (!input)
 		return ;
+	init_values(input);
 	input->map = fill_input(path, &input->lines, 0);
 	input->columns = count_columns(input->map[0]);
 	if (input->lines == input->columns || (!check_line_size(input->map)))
-		p_error(RECTANGLE);
+		p_error(RECTANGLE, input);
 	if (!check_walls(input))
-		p_error(WALL);
+		p_error(WALL, input);
 	if (!check_entities(input, 0, 0))
-		p_error(ENTITIES);
-	check_forbidden_entities(input->map);
+		p_error(ENTITIES, input);
+	check_forbidden_entities(input);
 	check_map_path(input);
-	while (input->map[i])
-	{
-		free(input->map[i]);
-		i++;
-	}
-	free(input->map);
+	free_map(input);
 	free(input);
 }
 
-void	p_error(t_error error)
+void	p_error(t_error error, t_map *data)
 {
+	free_map(data);
+	free(data);
 	if (error == RECTANGLE)
 		ft_printf("Error\nMap is not Rectangular.\n");
 	if (error == WALL)
