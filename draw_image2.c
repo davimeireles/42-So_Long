@@ -6,7 +6,7 @@
 /*   By: dmeirele <dmeirele@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:48:47 by dmeirele          #+#    #+#             */
-/*   Updated: 2024/01/15 14:48:47 by dmeirele         ###   ########.fr       */
+/*   Updated: 2024/01/15 23:51:00 by dmeirele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void	render_old(t_map *data)
 	map = data->map;
 	if (map[old_y][old_x] == '0')
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->img[4], old_x * 32, old_y * 32);
+			data->img[4], old_x * 48, old_y * 48);
 	if (map[old_y][old_x] == 'E')
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->img[3], old_x * 32, old_y * 32);
+			data->img[3], old_x * 48, old_y * 48);
 }
 
 void	render_new(t_map *data)
@@ -40,9 +40,9 @@ void	render_new(t_map *data)
 	map = data->map;
 	if (map[y][x] == 'E')
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->img[3], x * 32, y * 32);
+			data->img[3], x * 48, y * 48);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-		data->img[1], x * 32, y * 32);
+		data->img[1], x * 48, y * 48);
 }
 
 void	init_values(t_map *data)

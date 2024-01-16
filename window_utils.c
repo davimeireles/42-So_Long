@@ -6,7 +6,7 @@
 /*   By: dmeirele <dmeirele@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 18:59:15 by dmeirele          #+#    #+#             */
-/*   Updated: 2024/01/15 18:59:15 by dmeirele         ###   ########.fr       */
+/*   Updated: 2024/01/15 23:50:31 by dmeirele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void	window_utilities(t_map	*data)
 	int	length;
 	int	height;
 
-	length = data->columns * 32;
-	height = data->lines * 32;
+	length = data->columns * 48;
+	height = data->lines * 48;
 	find_end(data);
 	find_player(data);
 	check_entities(data, 0, 0);

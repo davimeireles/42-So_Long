@@ -22,10 +22,12 @@ int	count_lines(char *path)
 	if (fd < 0)
 		return (0);
 	lines = 0;
-	while ((line = get_next_line(fd)))
+	line = get_next_line(fd);
+	while (line)
 	{
 		lines++;
 		free(line);
+		line = get_next_line(fd);
 	}
 	close(fd);
 	return (lines);
@@ -83,8 +85,12 @@ char	**fill_input(char *path, int *t_lines, int i)
 		free(lines);
 		return (NULL);
 	}
-	while ((str = get_next_line(fd)))
+	str = get_next_line(fd);
+	while (str)
+	{
 		lines[i++] = str;
+		str = get_next_line(fd);
+	}
 	lines[i] = NULL;
 	close(fd);
 	return (lines);
