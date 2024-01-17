@@ -105,6 +105,4 @@ void	render_old(t_map *data);
 void	render_new(t_map *data);
 void	init_values(t_map *data);
 
-/* random functions */
-
 #endif

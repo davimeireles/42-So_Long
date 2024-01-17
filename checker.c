@@ -51,6 +51,8 @@ void	validate_map(char *path)
 		return ;
 	init_values(input);
 	input->map = fill_input(path, &input->lines, 0);
+	if (input->lines == 0)
+		p_error(PATH, input);
 	input->columns = count_columns(input->map[0]);
 	if (input->lines == input->columns || (!check_line_size(input->map)))
 		p_error(RECTANGLE, input);

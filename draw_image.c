@@ -29,11 +29,16 @@ void	load_images(t_map *data)
 
 	s = 48;
 	data->img = malloc(sizeof(void *) * ENTITIE);
-	data->img[0] = mlx_xpm_file_to_image(data->mlx_ptr, "./img/wall48.xpm", &s, &s);
-	data->img[1] = mlx_xpm_file_to_image(data->mlx_ptr, "./img/player48.xpm", &s, &s);
-	data->img[2] = mlx_xpm_file_to_image(data->mlx_ptr, "./img/colec48.xpm", &s, &s);
-	data->img[3] = mlx_xpm_file_to_image(data->mlx_ptr, "./img/colec48.xpm", &s, &s);
-	data->img[4] = mlx_xpm_file_to_image(data->mlx_ptr, "./img/ground48.xpm", &s, &s);
+	data->img[0] = mlx_xpm_file_to_image(data->mlx_ptr, "./img/wall48x.xpm",
+			&s, &s);
+	data->img[1] = mlx_xpm_file_to_image(data->mlx_ptr, "./img/player48x.xpm",
+			&s, &s);
+	data->img[2] = mlx_xpm_file_to_image(data->mlx_ptr, "./img/colec48x.xpm", 
+			&s, &s);
+	data->img[3] = mlx_xpm_file_to_image(data->mlx_ptr, "./img/exit48x.xpm", 
+			&s, &s);
+	data->img[4] = mlx_xpm_file_to_image(data->mlx_ptr, "./img/ground48x.xpm", 
+			&s, &s);
 }
 
 void	render(t_map *data, int i, int j)
