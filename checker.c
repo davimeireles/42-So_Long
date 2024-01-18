@@ -68,8 +68,11 @@ void	validate_map(char *path)
 
 void	p_error(t_error error, t_map *data)
 {
-	free_map(data);
-	free(data);
+	if(data)
+	{
+		free_map(data);
+		free(data);
+	}
 	if (error == RECTANGLE)
 		ft_printf("Error\nMap is not Rectangular.\n");
 	if (error == WALL)

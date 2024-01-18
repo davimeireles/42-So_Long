@@ -59,7 +59,7 @@ void	render(t_map *data, int i, int j)
 					data->win_ptr, data->img[2], j * 48, i * 48);
 			if (data->map[i][j] == 'E')
 				mlx_put_image_to_window(data->mlx_ptr,
-					data->win_ptr, data->img[4], j * 48, i * 48);
+					data->win_ptr, data->img[3], j * 48, i * 48);
 			if (data->map[i][j] == '0')
 				mlx_put_image_to_window(data->mlx_ptr,
 					data->win_ptr, data->img[4], j * 48, i * 48);
@@ -82,7 +82,7 @@ void	refresh(t_map *data, int x, int y)
 	{
 		if (data->coins == 0)
 		{
-			ft_printf("Finish!");
+			ft_printf("Congrats, you win!!!\n");
 			close_window(data);
 		}
 	}
